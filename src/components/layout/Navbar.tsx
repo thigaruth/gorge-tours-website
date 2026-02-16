@@ -22,7 +22,7 @@ export default function Navbar() {
           <span className="rounded-full bg-primary/15 p-2 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
             <Trees size={18} />
           </span>
-          <span className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground">Gorge Safari Co.</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground">Gorge Tours</span>
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm md:flex">
