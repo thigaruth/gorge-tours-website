@@ -1,11 +1,13 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { format } from 'date-fns'
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -99,6 +101,7 @@ export default function BookingPanel({ packageOptions, destinationOptions }: Pro
   const packageId = form.watch('packageId')
   const travelers = form.watch('travelers') || 1
   const budgetRange = form.watch('budgetRange')
+  const startDate = form.watch('startDate')
 
   const selectedPackage = useMemo(
     () => packageOptions.find((item) => item.id === packageId),
@@ -129,6 +132,13 @@ export default function BookingPanel({ packageOptions, destinationOptions }: Pro
       max: Math.round(projected * 1.18),
     }
   }, [travelers, budgetRange, selectedPackage])
+
+  const selectedStartDate = useMemo(() => {
+    if (!startDate) return undefined
+    const parsed = new Date(startDate)
+    if (Number.isNaN(parsed.getTime())) return undefined
+    return parsed
+  }, [startDate])
 
   async function onSubmit(values: BookingFormValues) {
     setSubmitState({ loading: true, success: null, error: null })
@@ -246,9 +256,51 @@ export default function BookingPanel({ packageOptions, destinationOptions }: Pro
                 </Select>
               </div>
 
-              <div>
-                <Label htmlFor="startDate">Preferred start date</Label>
-                <Input id="startDate" type="date" {...form.register('startDate')} />
+              <div className="md:col-span-2">
+                <Label>Preferred start date</Label>
+                <div className="mt-2 grid gap-4 rounded-2xl border border-border bg-background/70 p-4 lg:grid-cols-[1fr_220px]">
+                  <Calendar
+                    mode="single"
+                    selected={selectedStartDate}
+                    disabled={{ before: new Date() }}
+                    onSelect={(date) => {
+                      if (!date) return
+                      form.setValue('startDate', format(date, 'yyyy-MM-dd'), { shouldValidate: true, shouldDirty: true })
+                    }}
+                  />
+                  <div className="space-y-3 rounded-xl border border-border bg-card p-3">
+                    <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">Selected Date</p>
+                    <p className="text-lg font-semibold">
+                      {selectedStartDate ? format(selectedStartDate, 'EEE, MMM d, yyyy') : 'Pick a date'}
+                    </p>
+                    <div className="grid gap-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          const date = new Date()
+                          date.setDate(date.getDate() + 30)
+                          form.setValue('startDate', format(date, 'yyyy-MM-dd'), { shouldValidate: true, shouldDirty: true })
+                        }}
+                      >
+                        +30 days
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          const date = new Date()
+                          date.setDate(date.getDate() + 60)
+                          form.setValue('startDate', format(date, 'yyyy-MM-dd'), { shouldValidate: true, shouldDirty: true })
+                        }}
+                      >
+                        +60 days
+                      </Button>
+                    </div>
+                  </div>
+                </div>
                 <p className="mt-1 text-xs text-destructive">{form.formState.errors.startDate?.message}</p>
               </div>
 
