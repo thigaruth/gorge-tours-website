@@ -41,10 +41,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const normalizedInput = {
-    ...parsedBody.data,
-    travelers: Number(parsedBody.data.travelers),
-  }
+  const normalizedInput = tourService.normalizeBookingBody(parsedBody.data)
 
   const bookingInput = bookingRequestSchema.safeParse(normalizedInput)
   if (!bookingInput.success) {

@@ -1,5 +1,18 @@
 export type TravelStyle = 'luxury' | 'family' | 'photography' | 'adventure'
 
+export type BudgetRange = 'economy' | 'comfort' | 'premium' | 'ultra_luxury'
+
+export type LodgingLevel = 'standard' | 'boutique' | 'luxury_tented' | 'ultra_luxury_lodge'
+
+export type AddOn =
+  | 'hot_air_balloon'
+  | 'night_game_drive'
+  | 'cultural_visit'
+  | 'photography_masterclass'
+  | 'bush_breakfast'
+
+export type ContactChannel = 'email' | 'phone' | 'whatsapp'
+
 export type Destination = {
   id: string
   name: string
@@ -37,13 +50,41 @@ export type BookingRequest = {
   phone: string
   travelers: number
   packageId: string
+  destinationId: string
+  travelStyle: TravelStyle
   startDate: string
-  notes?: string
+  flexibleDates: boolean
+  durationDays: number
+  budgetRange: BudgetRange
+  lodgingLevel: LodgingLevel
+  addOns: AddOn[]
+  specialRequests?: string
+  preferredContact: ContactChannel
+  agreeToTerms: boolean
+  marketingOptIn: boolean
 }
 
 export type BookingRecord = BookingRequest & {
   id: string
   status: 'pending' | 'confirmed' | 'cancelled'
   quoteUsd: number
+  createdAt: string
+}
+
+export type ContactRequest = {
+  fullName: string
+  email: string
+  phone?: string
+  subject: string
+  message: string
+  travelers?: number
+  travelMonth?: string
+  budgetRange?: BudgetRange
+  preferredContact: ContactChannel
+  newsletterOptIn: boolean
+}
+
+export type ContactRecord = ContactRequest & {
+  id: string
   createdAt: string
 }

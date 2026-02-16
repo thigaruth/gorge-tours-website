@@ -1,25 +1,40 @@
+import { Card, CardContent } from '@/components/ui/card'
+
 type Props = {
   destinations: number
   packages: number
   avgPrice: number
+  contactRequests: number
 }
 
-export default function MetricsStrip({ destinations, packages, avgPrice }: Props) {
+export default function MetricsStrip({ destinations, packages, avgPrice, contactRequests }: Props) {
   return (
-    <section className="bg-stone-100">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-5 py-8 sm:grid-cols-3">
-        <div className="rounded-2xl border border-black/10 bg-white p-5">
-          <p className="text-3xl font-semibold text-ink-950">{destinations}</p>
-          <p className="text-sm text-stone-600">Priority destinations</p>
-        </div>
-        <div className="rounded-2xl border border-black/10 bg-white p-5">
-          <p className="text-3xl font-semibold text-ink-950">{packages}</p>
-          <p className="text-sm text-stone-600">Curated package templates</p>
-        </div>
-        <div className="rounded-2xl border border-black/10 bg-white p-5">
-          <p className="text-3xl font-semibold text-ink-950">${avgPrice}</p>
-          <p className="text-sm text-stone-600">Average base package price (USD)</p>
-        </div>
+    <section className="container -mt-4 pb-10">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Card className="bg-card/80 backdrop-blur">
+          <CardContent className="p-5">
+            <p className="text-3xl font-semibold">{destinations}</p>
+            <p className="mt-1 text-sm text-muted-foreground">Safari destinations</p>
+          </CardContent>
+        </Card>
+        <Card className="bg-card/80 backdrop-blur">
+          <CardContent className="p-5">
+            <p className="text-3xl font-semibold">{packages}</p>
+            <p className="mt-1 text-sm text-muted-foreground">Curated packages</p>
+          </CardContent>
+        </Card>
+        <Card className="bg-card/80 backdrop-blur">
+          <CardContent className="p-5">
+            <p className="text-3xl font-semibold">${avgPrice}</p>
+            <p className="mt-1 text-sm text-muted-foreground">Average base rate</p>
+          </CardContent>
+        </Card>
+        <Card className="bg-card/80 backdrop-blur">
+          <CardContent className="p-5">
+            <p className="text-3xl font-semibold">{contactRequests}</p>
+            <p className="mt-1 text-sm text-muted-foreground">Live consultation requests</p>
+          </CardContent>
+        </Card>
       </div>
     </section>
   )

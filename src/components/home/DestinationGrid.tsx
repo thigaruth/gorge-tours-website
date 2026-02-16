@@ -1,4 +1,6 @@
 import { Destination } from '@/lib/types'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent } from '@/components/ui/card'
 
 type Props = {
   destinations: Destination[]
@@ -6,40 +8,45 @@ type Props = {
 
 export default function DestinationGrid({ destinations }: Props) {
   return (
-    <section id="destinations" className="bg-stone-50 py-16">
-      <div className="mx-auto max-w-7xl px-5">
-        <h2 className="text-3xl font-semibold text-ink-950 md:text-4xl">Destination Intelligence</h2>
-        <p className="mt-3 max-w-2xl text-stone-700">
-          Every route is mapped with seasonality, wildlife density, and logistics in mind.
+    <section id="destinations" className="py-14">
+      <div className="container">
+        <Badge variant="secondary" className="rounded-full px-3 py-1">
+          Iconic Landscapes
+        </Badge>
+        <h2 className="mt-4 text-4xl font-semibold">Choose the wilderness vibe you want.</h2>
+        <p className="mt-3 max-w-2xl text-muted-foreground">
+          From migration drama to quiet conservancy elegance, each destination is tuned for different traveler energy and styles.
         </p>
 
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {destinations.map((item) => (
-            <article key={item.id} className="overflow-hidden rounded-3xl border border-black/10 bg-white">
+            <Card key={item.id} className="overflow-hidden border-border/70 bg-card/80 shadow-safari">
               <div
-                className="h-56 w-full bg-cover bg-center"
-                style={{ backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.45)), url(${item.heroImage})` }}
+                className="h-56 bg-cover bg-center"
+                style={{
+                  backgroundImage: `linear-gradient(180deg, rgba(16,31,24,0.2), rgba(16,31,24,0.65)), url(${item.heroImage})`,
+                }}
               />
-              <div className="p-5">
+              <CardContent className="space-y-4 p-5">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-ink-950">{item.name}</h3>
-                    <p className="text-sm text-stone-600">{item.region}</p>
+                    <h3 className="text-2xl font-semibold">{item.name}</h3>
+                    <p className="text-sm text-muted-foreground">{item.region}</p>
                   </div>
-                  <p className="rounded-full bg-ink-950 px-3 py-1 text-xs font-medium text-stone-100">
+                  <Badge variant="outline" className="whitespace-nowrap">
                     Wildlife {item.wildlifeIndex}/100
-                  </p>
+                  </Badge>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-stone-700">{item.summary}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <p className="text-sm text-muted-foreground">{item.summary}</p>
+                <div className="flex flex-wrap gap-2">
                   {item.highlights.map((highlight) => (
-                    <span key={highlight} className="rounded-full bg-sand-100 px-3 py-1 text-xs text-stone-800">
+                    <Badge key={highlight} variant="secondary" className="rounded-full bg-secondary/70">
                       {highlight}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
-              </div>
-            </article>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

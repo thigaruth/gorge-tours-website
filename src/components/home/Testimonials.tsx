@@ -1,3 +1,5 @@
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent } from '@/components/ui/card'
 import { Testimonial } from '@/lib/types'
 
 type Props = {
@@ -6,17 +8,22 @@ type Props = {
 
 export default function Testimonials({ testimonials }: Props) {
   return (
-    <section id="reviews" className="bg-stone-100 py-16">
-      <div className="mx-auto max-w-7xl px-5">
-        <h2 className="text-3xl font-semibold text-ink-950 md:text-4xl">Traveler Feedback</h2>
+    <section className="py-16">
+      <div className="container">
+        <Badge variant="secondary" className="rounded-full">
+          Guest Stories
+        </Badge>
+        <h2 className="mt-4 text-4xl font-semibold">What travelers remember most.</h2>
 
-        <div className="mt-8 grid gap-5 lg:grid-cols-3">
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
           {testimonials.map((item) => (
-            <article key={item.id} className="rounded-3xl border border-black/10 bg-white p-5">
-              <p className="text-sm leading-relaxed text-stone-700">"{item.quote}"</p>
-              <p className="mt-4 text-sm font-semibold text-ink-950">{item.traveler}</p>
-              <p className="text-xs text-stone-500">{item.country}</p>
-            </article>
+            <Card key={item.id} className="border-border/70 bg-card/80">
+              <CardContent className="p-6">
+                <p className="text-sm leading-relaxed text-muted-foreground">"{item.quote}"</p>
+                <p className="mt-4 text-sm font-semibold">{item.traveler}</p>
+                <p className="text-xs uppercase tracking-[0.13em] text-muted-foreground">{item.country}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

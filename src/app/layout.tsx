@@ -5,17 +5,17 @@ import Footer from '@/components/layout/Footer'
 import ChatWidget from '@/components/chat/ChatWidget'
 
 export const metadata: Metadata = {
-  title: 'The Gorge Tours & Travel | Kenya Safari Architecture',
+  title: 'The Gorge Tours & Travel | Safari Journeys Across Kenya',
   description:
-    'Comprehensive Kenya safari platform with robust booking APIs, validated workflows, and premium itinerary design.',
+    'Luxury and custom safari journeys through Kenya with seamless planning, reliable operations, and unforgettable wildlife experiences.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-stone-50 text-stone-900 antialiased">
+      <body>
         <Navbar />
-        <main>{children}</main>
+        <main className="overflow-x-clip">{children}</main>
         <Footer />
         <ChatWidget />
       </body>

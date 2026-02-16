@@ -1,32 +1,34 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-black/10 bg-stone-900 text-stone-200">
-      <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 md:grid-cols-3">
-        <div>
-          <p className="text-lg font-semibold tracking-wide">The Gorge Tours & Travel</p>
-          <p className="mt-3 text-sm leading-relaxed text-stone-300">
-            Performance-focused safari planning across Kenya. Reliable logistics, experienced guides, and tailored routes.
+    <footer className="border-t border-border/70 bg-[linear-gradient(180deg,rgba(36,57,39,0.96),rgba(16,31,24,1))] text-stone-100">
+      <div className="container grid gap-10 py-14 md:grid-cols-3">
+        <section>
+          <p className="text-sm uppercase tracking-[0.24em] text-stone-300">Gorge Safari Co.</p>
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-stone-200/90">
+            Bespoke Kenya safari itineraries powered by disciplined logistics, experienced guides, and a design-forward client
+            experience.
           </p>
-        </div>
+        </section>
 
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-400">Contact</p>
-          <ul className="mt-3 space-y-2 text-sm text-stone-300">
+        <section>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-300">Reach Us</p>
+          <ul className="mt-4 space-y-2 text-sm text-stone-100/90">
             <li>+254 700 123 456</li>
-            <li>bookings@gorgetours.travel</li>
+            <li>hello@gorgesafari.co</li>
             <li>Nairobi, Kenya</li>
+            <li>Mon-Sat: 08:00 - 19:00 EAT</li>
           </ul>
-        </div>
+        </section>
 
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-400">Coverage</p>
-          <ul className="mt-3 space-y-2 text-sm text-stone-300">
-            <li>Maasai Mara</li>
-            <li>Amboseli</li>
-            <li>Samburu</li>
-            <li>Laikipia Conservancies</li>
+        <section>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-300">Top Routes</p>
+          <ul className="mt-4 space-y-2 text-sm text-stone-100/90">
+            <li>Maasai Mara Migration Circuit</li>
+            <li>Amboseli Elephant Panorama</li>
+            <li>Samburu Rare Species Trail</li>
+            <li>Laikipia Conservancy Week</li>
           </ul>
-        </div>
+        </section>
       </div>
     </footer>
   )

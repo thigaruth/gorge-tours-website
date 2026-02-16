@@ -2,35 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
+@layer base {
+  :root {
+    --background: 48 38% 96%;
+    --foreground: 160 28% 12%;
+    --card: 45 33% 98%;
+    --card-foreground: 160 24% 16%;
+    --popover: 45 33% 98%;
+    --popover-foreground: 160 24% 16%;
+    --primary: 29 61% 43%;
+    --primary-foreground: 49 100% 97%;
+    --secondary: 98 17% 83%;
+    --secondary-foreground: 160 24% 16%;
+    --muted: 42 35% 90%;
+    --muted-foreground: 157 14% 34%;
+    --accent: 143 28% 30%;
+    --accent-foreground: 44 60% 95%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 48 38% 96%;
+    --border: 43 25% 79%;
+    --input: 43 25% 79%;
+    --ring: 29 61% 43%;
+    --radius: 0.95rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    margin: 0;
+    font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(194, 143, 61, 0.1), transparent 32%),
+      radial-gradient(circle at 85% 15%, rgba(66, 102, 68, 0.14), transparent 40%),
+      linear-gradient(180deg, rgba(244, 238, 223, 0.9), rgba(238, 228, 203, 0.6));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    letter-spacing: 0.01em;
+  }
+
+  ::selection {
+    background: rgba(176, 117, 40, 0.3);
+    color: hsl(var(--foreground));
+  }
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer utilities {
+  .safari-grid {
+    background-image:
+      linear-gradient(to right, rgba(90, 71, 40, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(90, 71, 40, 0.08) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
 
-body {
-  margin: 0;
-  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-  letter-spacing: 0.01em;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-::selection {
-  background: #d8b566;
-  color: #0c1513;
+  .dune-mask {
+    mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  }
 }
