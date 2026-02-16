@@ -6,10 +6,10 @@ import { Menu, X, Trees } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
-  { href: '#destinations', label: 'Destinations' },
-  { href: '#experiences', label: 'Experiences' },
-  { href: '#book', label: 'Booking' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#destinations', label: 'Destinations' },
+  { href: '/#experiences', label: 'Experiences' },
+  { href: '/booking', label: 'Booking' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -27,18 +27,18 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-8 text-sm md:flex">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="text-muted-foreground transition-colors hover:text-foreground">
+            <Link key={item.href} href={item.href} className="text-muted-foreground transition-colors hover:text-foreground">
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a
-          href="#book"
+        <Link
+          href="/booking"
           className="hidden h-9 items-center rounded-full bg-accent px-4 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90 md:inline-flex"
         >
           Plan My Safari
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -53,14 +53,14 @@ export default function Navbar() {
       <div className={cn('border-t border-border bg-card px-4 py-3 md:hidden', open ? 'block' : 'hidden')}>
         <nav className="flex flex-col gap-2">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
               className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
