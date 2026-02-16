@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ChevronDown, Calendar, Users, MapPin } from 'lucide-react'
 import Link from 'next/link'
 
-gsap.register(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger)
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null)

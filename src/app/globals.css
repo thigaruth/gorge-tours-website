@@ -12,7 +12,7 @@
 
 body {
   margin: 0;
-  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
 }
 
@@ -22,7 +22,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
   letter-spacing: 0.01em;
 }
 
