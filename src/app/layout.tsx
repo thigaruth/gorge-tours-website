@@ -1,53 +1,34 @@
 import type { Metadata } from 'next'
-import { Inter, Montserrat, Playfair_Display } from 'next/font/google'
+import { Manrope, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import ChatWidget from '@/components/chat/ChatWidget'
 
-const inter = Inter({ 
+const manrope = Manrope({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-manrope',
   display: 'swap',
 })
 
-const montserrat = Montserrat({ 
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-montserrat',
-  display: 'swap',
-})
-
-const playfair = Playfair_Display({ 
-  subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-cormorant',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'The Gorge Tours and Travel | Kenya Safari Experts',
-  description: 'Experience authentic Kenya safari adventures with The Gorge Tours and Travel. Expert-guided tours to Maasai Mara, Amboseli, Samburu & more. Book your dream safari today!',
-  keywords: 'Kenya safari, Maasai Mara tours, Amboseli safari, Samburu safari, Kenya wildlife tours, safari packages Kenya',
-  authors: [{ name: 'The Gorge Tours and Travel' }],
-  openGraph: {
-    title: 'The Gorge Tours and Travel | Kenya Safari Experts',
-    description: 'Experience authentic Kenya safari adventures with expert guides',
-    type: 'website',
-    locale: 'en_US',
-  },
+  title: 'The Gorge Tours & Travel | Kenya Safari Architecture',
+  description:
+    'Comprehensive Kenya safari platform with robust booking APIs, validated workflows, and premium itinerary design.',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${montserrat.variable} ${playfair.variable}`}>
-      <body className={inter.className}>
+    <html lang="en" className={`${manrope.variable} ${cormorant.variable}`}>
+      <body className="bg-stone-50 text-stone-900 antialiased">
         <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
         <ChatWidget />
       </body>

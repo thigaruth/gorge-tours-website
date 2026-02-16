@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "if [ -f prisma/schema.prisma ]; then PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1 prisma generate; else echo 'Skipping prisma generate (no prisma/schema.prisma found)'; fi"
   },
   "dependencies": {
     "next": "^14.2.0",
@@ -41,7 +41,7 @@
     "bcryptjs": "^2.4.3",
     "@types/bcryptjs": "^2.4.6",
     "resend": "^3.2.0",
-    "nodemailer": "^6.9.0",
+    "nodemailer": "^7.0.7",
     "@types/nodemailer": "^6.4.0",
     "@react-pdf/renderer": "^3.4.0",
     "date-fns": "^3.6.0",
