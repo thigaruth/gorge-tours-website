@@ -36,7 +36,7 @@ export default function Hero() {
               </a>
               <a href="#contact">
                 <Button variant="outline" size="lg">
-                  Talk to Planner
+                  Talk to Your Planner
                 </Button>
               </a>
             </div>

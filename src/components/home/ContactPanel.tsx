@@ -97,7 +97,7 @@ export default function ContactPanel() {
             <p>
               We reply within <span className="font-semibold text-foreground">2 business hours</span> during East Africa time.
             </p>
-            <p>Multi-country add-ons (Kenya + Tanzania) can be scoped in this form.</p>
+            
           </CardContent>
         </Card>
 
